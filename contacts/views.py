@@ -15,7 +15,7 @@ def save_number(request):
         form = SaveNumberForm(data=request.POST)
         if form.is_valid():
             form.save()
-            #return redirect('home')
+            return redirect('home')
 
     else:
         form = SaveNumberForm()
