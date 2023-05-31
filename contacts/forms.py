@@ -7,6 +7,11 @@ class SaveNumberForm(forms.ModelForm):
         model = Contact
         fields = ('name', 'family', 'phone',)
 
+class SearchContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ('name',)
+
 
 
 

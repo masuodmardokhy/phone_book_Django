@@ -1,10 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
+<h1>phone book </h1>
 
+ <form method="post"  action="{% url 'contacts:save_number' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="save">
+ </form>
+
+
+<form>
+      <h2>list contacts</h2>
+    <table>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>phone</th>
+        <th>*</th>
+      </tr>
+  {% for n in list %}
+      <tr>
+        <td>{{ n.name}}</td>
+        <td>{{ n.family}}</td>
+        <td>{{ n.phone}}</td>
+        <td><button class="delete" type="submit">delete</button></td>
+      </tr>
+    {% endfor %}
+    </table>
+
+  </form>
 </body>
 </html>

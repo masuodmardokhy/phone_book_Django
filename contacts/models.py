@@ -8,8 +8,8 @@ class Contact(models.Model):
     phone = models.CharField(max_length=20)
 
     class Meta:
-        verbose_name = 'مشخصات '
-        verbose_name_plural = 'مشخصات کاربران'
+        verbose_name = 'contacts'
+        verbose_name_plural = 'contacts profile'
 
 
 

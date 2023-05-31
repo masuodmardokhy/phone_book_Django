@@ -4,31 +4,28 @@
 {% block css%}
     <link rel="stylesheet" href="{% static 'contacts/home.css' %}">
 {%endblock css%}
-
 {% block body %}
 {% csrf_token %}
 
 <div>
-  <form action="{% url 'contacts:save_number' %}" method="post">
-    {% csrf_token %}
-
-  <h3 style="text-align: center">Phonebook</h3><br>
-    {{ form.as_p }}
-    <label for="name">Name</label>
-    <input type="text" id="fname" name="name:" placeholder=" name.." required>
-
-    <label for="name">family</label>
-    <input type="text" id="lname" name="family:" placeholder=" last name.."required>
-
-    <label for="phone">phone</label>
-    <input type="text" id="phone" name="phone:" placeholder=" phone.." required>
-    <button type="submit">save</button>
-  </form>
-
+ <form method="post" >
+      <h3 style="text-align: center">Phonebook</h3><br>
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="save">
+ </form><br>
 
 
 <form>
       <h2>list contacts</h2>
+<form method="post">
+      <input type="submit" value="search">
+      {% csrf_token %}
+      {{ search.as_p }}
+
+</form>
+
+
 
     <table>
       <tr>
@@ -42,13 +39,16 @@
         <td>{{ n.name}}</td>
         <td>{{ n.family}}</td>
         <td>{{ n.phone}}</td>
-        <td><button class="delete" type="submit">delete</button></td>
+        <td>
+        <button class="delete"><a class="a" href="{% url 'contacts:change_contact' n.id %}">CHANGE</a></button>
+        <button class="delete"><a class="a" href="{% url 'contacts:delete_number' n.id %}">DELETE</a></button></td>
+        </td>
       </tr>
     {% endfor %}
     </table>
-
   </form>
 </div>
+
 {% endblock body %}
 
 
